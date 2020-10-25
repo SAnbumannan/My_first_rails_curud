@@ -1,0 +1,19 @@
+<%= content_for(:title, 'Show Profile') %>
+<p>This is profile page</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @player.first_name %></td>
+      <td><%= @player.last_name %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Home Page', players_path %>
