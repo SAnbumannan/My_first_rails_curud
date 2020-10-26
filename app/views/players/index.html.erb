@@ -1,6 +1,10 @@
 <%= content_for(:title, 'Player list') %>
 <h1> This are <%= pluralize(@players.count, 'player') %></h1>
 
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -15,13 +19,14 @@
       <td><%= player.first_name %></td>
       <td><%= player.last_name %></td>
       <td>
-        <%= link_to 'Show Profile', player_show_path(player.id) %> |
-        <%= link_to 'Edit Profile', player_edit_path(player.id) %> |
-        <%= link_to 'Delete Profile', player_show_path(player.id), data: { method: 'delete', confirm: "Are you sure?"} %>
+        <%= link_to 'Show Profile', players_show_path(player.id) %> |
+        <%= link_to 'Edit Profile', players_edit_path(player.id) %> |
+        <%= link_to 'Delete Profile', players_show_path(player.id), data: { method: 'delete', confirm: "Are you sure?"} %>
       </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Player', players_new_path %>
+<%= link_to 'New Player', players_new_path %> ||
+<%= link_to 'Log Out', '/logout' %>

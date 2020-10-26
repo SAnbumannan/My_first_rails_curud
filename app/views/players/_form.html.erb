@@ -1,0 +1,14 @@
+<!--<%= method %> access locals variable this way-->
+
+<%= form_for(@player) do |form| %>
+  <p>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </p>
+  <p>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <%= form.submit %>
+<% end %>

@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  before_action :require_login
+
   def index
     @players = Player.all
   end
@@ -14,7 +16,8 @@ class PlayersController < ApplicationController
 
     if player.save
       # redirect_to '/players'
-      redirect_to :root # another method for redirect
+      # redirect_to :root # another method for redirect
+      redirect_to players_path
     else
       flash[:errors] = player.errors.full_messages
       # redirect_to '/players/new'
@@ -33,7 +36,8 @@ class PlayersController < ApplicationController
     player = Player.find(params[:id])
 
     if player.update(player_params)
-      redirect_to :root
+      # redirect_to :root
+      redirect_to players_path
     else
       flash[:errors] = player.errors.full_messages
       # redirect_to "/players/#{player.id}/edit"
@@ -44,7 +48,8 @@ class PlayersController < ApplicationController
   def destroy
     player = Player.find(params[:id])
     player.destroy
-    redirect_to :root
+    # redirect_to :root
+    redirect_to players_path
   end
 
   private

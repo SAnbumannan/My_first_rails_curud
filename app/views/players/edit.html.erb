@@ -7,7 +7,20 @@
   <% end %>
 <% end %>
 
-<form action="/players/<%= @player.id %>" method="post">
+<%= form_for @player, url: players_show_url(@player), html: { method: :patch }  do |form| %>
+  <p>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </p>
+  <p>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <%= form.submit %>
+<% end %>
+
+<!-- <form action="/players/<%= @player.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>
@@ -20,6 +33,6 @@
     <input type="text" name="player[last_name]" value="<%= @player.last_name %>">
   </p>
   <input type="submit" value="Update">
-</form>
+</form> -->
 
-<%= link_to 'Go Back', players_path %>
+<%= link_to 'Go Back', root_path %>
